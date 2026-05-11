@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Roots Foundation | Des Moines, Iowa</title>
+  <meta name="description" content="Strengthening Greater Des Moines families through food access, youth programs, and community connection. Donate today." />
+  <link rel="icon" href="../bosatek.com/assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:      #1b4f4e;
+      --teal2:     #1e5c5a;
+      --teal-lt:   #e8f3f2;
+      --teal-mid:  #2d7370;
+      --gold:      #e8a94d;
+      --gold2:     #f0b85a;
+      --cream:     #fdf8f0;
+      --dark:      #1a2e2d;
+      --mid:       #4a5e5c;
+      --muted:     #7a9290;
+      --white:     #ffffff;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'Inter', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      background: linear-gradient(90deg, #ed3a90, #f37a22);
+      color: #fff; text-align: center;
+      padding: 10px 20px; font-size: 13px;
+      font-family: var(--sans);
+    }
+    .demo-banner a { color: #fff; font-weight: 600; text-decoration: underline; }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--teal);
+      padding: 0 clamp(20px,4vw,60px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .nav-logo {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 18px; font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .nav-name small {
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .nav-links {
+      display: flex; gap: 28px;
+      font-size: 13px; font-weight: 400;
+      color: rgba(255,255,255,0.7);
+    }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-donate {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-donate:hover { background: var(--gold2); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 85vh;
+      background: var(--teal);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(27,79,78,0.95) 0%, rgba(27,79,78,0.6) 55%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 700px;
+      padding: clamp(60px,8vw,100px) clamp(24px,5vw,80px);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,169,77,0.15);
+      border: 1px solid rgba(232,169,77,0.4);
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      padding: 14px 30px; border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 14px 30px; border-radius: 100px;
+      font-size: 15px; font-weight: 400;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); }
+
+    /* ── IMPACT STATS ── */
+    .impact-bar {
+      background: var(--dark);
+      padding: 48px clamp(24px,5vw,80px);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 32px;
+    }
+    .impact-stat { text-align: center; }
+    .impact-num {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .impact-label {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: clamp(60px,8vw,110px) clamp(24px,5vw,80px); }
+    .eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── PROGRAMS ── */
+    .programs { background: var(--white); }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .program-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .program-photo {
+      height: 220px;
+    }
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #ddd; color: #888;
+      font-size: 11px; font-family: monospace;
+      gap: 6px; text-align: center; padding: 12px;
+    }
+    .pp-nonprofit { background: linear-gradient(135deg, #b8cec8, #9ab5ae); }
+    .ph-icon { font-size: 1.8rem; opacity: 0.4; }
+    .ph-name { font-weight: 600; color: #555; }
+    .ph-size { opacity: 0.6; }
+
+    .program-body { padding: 28px; }
+    .program-tag {
+      display: inline-block;
+      background: var(--teal-lt);
+      color: var(--teal);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .program-body h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .program-body p {
+      font-size: 0.9rem; color: var(--mid);
+      line-height: 1.65; margin-bottom: 18px;
+    }
+    .program-link {
+      font-size: 13px; font-weight: 600;
+      color: var(--teal);
+      display: flex; align-items: center; gap: 6px;
+      transition: gap 0.2s;
+    }
+    .program-link:hover { gap: 10px; }
+
+    /* ── MISSION QUOTE ── */
+    .mission-quote {
+      background: var(--teal);
+      padding: clamp(60px,8vw,100px) clamp(24px,5vw,80px);
+      text-align: center;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 8rem;
+      color: rgba(232,169,77,0.15);
+      line-height: 0.5;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .mission-quote blockquote {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 28px;
+      line-height: 1.35;
+    }
+    .mission-quote cite {
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── DONATE ── */
+    .donate { background: var(--cream); }
+    .donate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .donate-amounts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .donate-amount {
+      border: 2px solid rgba(27,79,78,0.15);
+      border-radius: 10px;
+      padding: 20px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      text-align: center;
+    }
+    .donate-amount:hover, .donate-amount.active {
+      border-color: var(--teal);
+      background: var(--teal-lt);
+    }
+    .donate-amount .amount {
+      font-family: var(--serif);
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--teal);
+    }
+    .donate-amount .impact {
+      font-size: 11px; color: var(--muted);
+      line-height: 1.4; margin-top: 4px;
+    }
+    .btn-donate {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      background: var(--teal); color: var(--white);
+      padding: 16px; border-radius: 8px;
+      font-size: 16px; font-weight: 600;
+      border: none; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-donate:hover { background: var(--teal2); }
+    .donate-note {
+      font-size: 12px; color: var(--muted);
+      text-align: center; margin-top: 12px;
+      line-height: 1.5;
+    }
+    .donate-photo {
+      aspect-ratio: 4/5;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* ── EVENTS ── */
+    .events { background: var(--white); }
+    .event-list { margin-top: 48px; }
+    .event-item {
+      display: flex; align-items: flex-start; gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .event-date {
+      flex-shrink: 0;
+      width: 60px; text-align: center;
+      background: var(--teal-lt);
+      border-radius: 8px; padding: 10px 0;
+    }
+    .event-date .month {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--teal);
+    }
+    .event-date .day {
+      font-family: var(--serif);
+      font-size: 2rem; font-weight: 700;
+      color: var(--teal); line-height: 1;
+    }
+    .event-info h4 {
+      font-family: var(--serif);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .event-info p { font-size: 0.9rem; color: var(--mid); line-height: 1.55; }
+    .event-tag {
+      display: inline-block;
+      background: rgba(232,169,77,0.15);
+      color: #a06b10;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      margin-top: 8px;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--teal-lt); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: var(--teal);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-detail-text strong {
+      display: block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 4px;
+    }
+    .contact-detail-text span { font-size: 1rem; color: var(--mid); }
+
+    .contact-form { }
+    .form-row { margin-bottom: 16px; }
+    .form-row label {
+      display: block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1.5px solid rgba(27,79,78,0.15);
+      color: var(--dark);
+      padding: 13px 16px; border-radius: 8px;
+      font-size: 15px; font-family: var(--sans);
+      transition: border-color 0.2s; resize: vertical;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus {
+      outline: none; border-color: var(--teal);
+    }
+    .form-row textarea { min-height: 100px; }
+    .btn-teal {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      background: var(--teal); color: var(--white);
+      padding: 15px; border-radius: 8px;
+      font-size: 15px; font-weight: 600;
+      border: none; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-teal:hover { background: var(--teal2); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--dark);
+      padding: clamp(40px,5vw,64px) clamp(24px,5vw,80px);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand-name {
+      font-family: var(--serif);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .footer-desc {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+      line-height: 1.65; max-width: 280px;
+    }
+    .footer-col h5 {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+    .footer-col li a { transition: color 0.2s; }
+    .footer-col li a:hover { color: var(--gold); }
+    .footer-bottom {
+      background: #0d2120;
+      padding: 20px clamp(24px,5vw,80px);
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      display: flex; justify-content: space-between;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.45); }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    .back-link {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #fff; border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      padding: 10px 16px; border-radius: 100px;
+      font-size: 12px; font-weight: 500; color: #444;
+      display: flex; align-items: center; gap: 6px;
+      transition: box-shadow 0.2s;
+    }
+    .back-link:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.18); }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-name { font-size: 14px; }
+      .hero { min-height: 80vw; }
+      .donate-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .donate-amounts { grid-template-columns: 1fr 1fr; }
+      .footer { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; justify-content: center; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .impact-bar { grid-template-columns: 1fr 1fr; gap: 24px; padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO BANNER -->
+  <div class="demo-banner">
+    ⚠️ This is a BosaTek demo site. <a href="index.html">← Back to all examples</a> &nbsp;·&nbsp; Want a site like this? <a href="https://bosatek.com">bosatek.com</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-brand">
+      <div class="nav-logo">🌱</div>
+      <div class="nav-name">
+        Community Roots Foundation
+        <small>Greater Des Moines, Iowa</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#programs">Programs</a>
+      <a href="#events">Events</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#donate" class="nav-donate">Donate →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1920&q=80" alt="Community volunteers" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Serving Des Moines Since 2004</div>
+      <h1>Every family<br/>deserves to <em>thrive.</em></h1>
+      <p class="hero-sub">Community Roots Foundation connects Greater Des Moines families with food, education, and the community support they need to build lasting stability.</p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn-gold">Donate Today</a>
+        <a href="#programs" class="btn-ghost">Our Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT STATS -->
+  <div class="impact-bar">
+    <div class="impact-stat">
+      <div class="impact-num">4,800+</div>
+      <div class="impact-label">Families Served</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-num">120K</div>
+      <div class="impact-label">Meals Distributed</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-num">22</div>
+      <div class="impact-label">Programs Running</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-num">98%</div>
+      <div class="impact-label">Funds to Programs</div>
+    </div>
+  </div>
+
+  <!-- PROGRAMS -->
+  <section class="section programs" id="programs">
+    <div class="eyebrow">What We Do</div>
+    <div class="section-title">Our Programs</div>
+    <p class="section-sub">From mobile food pantries to after-school tutoring, every program targets a real, documented need in our community.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-photo">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=700&h=220&q=80" alt="Food pantry volunteers" style="width:100%;height:220px;object-fit:cover;" />
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Food Access</span>
+          <h3>Roots Food Pantry</h3>
+          <p>Weekly mobile distributions at 6 locations across Des Moines. No paperwork, no income verification — just groceries for families who need them.</p>
+          <a href="#" class="program-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-photo">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=700&h=220&q=80" alt="Kids in after-school program" style="width:100%;height:220px;object-fit:cover;" />
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Youth</span>
+          <h3>After-School Academy</h3>
+          <p>Free tutoring, mentorship, and enrichment programs for K–8 students at four Des Moines Public Schools locations, Monday through Thursday.</p>
+          <a href="#" class="program-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-photo">
+          <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=700&h=220&q=80" alt="Community gathering" style="width:100%;height:220px;object-fit:cover;" />
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Community</span>
+          <h3>Neighbor Connect</h3>
+          <p>Monthly community events, a resource referral hotline, and one-on-one case navigation to connect families with housing, utilities, and health services.</p>
+          <a href="#" class="program-link">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION QUOTE -->
+  <section class="mission-quote" id="about">
+    <span class="quote-mark">"</span>
+    <blockquote>No family in Greater Des Moines should have to choose between groceries and the electric bill. We exist to close that gap.</blockquote>
+    <cite>— Sarah Mitchell, Executive Director</cite>
+  </section>
+
+  <!-- DONATE -->
+  <section class="section donate" id="donate">
+    <div class="donate-grid">
+      <div>
+        <div class="eyebrow">Support Our Work</div>
+        <div class="section-title">Make a Difference Today</div>
+        <p class="section-sub">98 cents of every dollar goes directly to programs. We're a 501(c)(3) nonprofit — your donation is fully tax-deductible.</p>
+        <div class="donate-amounts">
+          <div class="donate-amount active">
+            <div class="amount">$25</div>
+            <div class="impact">Provides groceries for one family for a week</div>
+          </div>
+          <div class="donate-amount">
+            <div class="amount">$50</div>
+            <div class="impact">Sponsors one student in after-school tutoring</div>
+          </div>
+          <div class="donate-amount">
+            <div class="amount">$100</div>
+            <div class="impact">Funds a mobile pantry stop for one day</div>
+          </div>
+          <div class="donate-amount">
+            <div class="amount">$250</div>
+            <div class="impact">Covers one family's case navigation for a month</div>
+          </div>
+        </div>
+        <!-- DONATE BUTTON: Link to PayPal, Stripe, or Zeffy -->
+        <button class="btn-donate" onclick="alert('Donation link goes here — connect PayPal or Zeffy')">
+          Donate Securely →
+        </button>
+        <p class="donate-note">Community Roots Foundation is a 501(c)(3) nonprofit. EIN: 42-XXXXXXX</p>
+      </div>
+      <div class="donate-photo">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Community impact" style="width:100%;height:100%;min-height:400px;object-fit:cover;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section events" id="events">
+    <div class="eyebrow">Upcoming Events</div>
+    <div class="section-title">Join Us</div>
+    <p class="section-sub">From volunteer days to community dinners — everyone is welcome.</p>
+    <div class="event-list">
+      <div class="event-item">
+        <div class="event-date">
+          <div class="month">Jun</div>
+          <div class="day">7</div>
+        </div>
+        <div class="event-info">
+          <h4>Summer Food Drive &amp; Family Picnic</h4>
+          <p>Join us at Ashworth Park for our annual summer kickoff — bring a canned good donation, enjoy live music, and meet our volunteers and staff.</p>
+          <span class="event-tag">Community Event</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <div class="event-date">
+          <div class="month">Jun</div>
+          <div class="day">14</div>
+        </div>
+        <div class="event-info">
+          <h4>Volunteer Orientation — Food Pantry</h4>
+          <p>New to volunteering with us? This 90-minute orientation covers everything you need to join our mobile distribution crew. All ages 16+ welcome.</p>
+          <span class="event-tag">Volunteer</span>
+        </div>
+      </div>
+      <div class="event-item">
+        <div class="event-date">
+          <div class="month">Jun</div>
+          <div class="day">21</div>
+        </div>
+        <div class="event-info">
+          <h4>Annual Gala &amp; Fundraiser</h4>
+          <p>Our biggest fundraiser of the year. Dinner, silent auction, and live entertainment at the Des Moines Marriott. Tickets at the door or online.</p>
+          <span class="event-tag">Fundraiser</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="eyebrow">Get in Touch</div>
+    <div class="section-title">Contact Us</div>
+    <p class="section-sub">For program questions, volunteer inquiries, partnerships, or media — we'd love to hear from you.</p>
+    <div class="contact-grid" style="margin-top:48px;">
+      <div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            <span>(515) 555-0200</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span>hello@communityrootsdm.org</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Office</strong>
+            <span>1234 Forest Ave, Des Moines, IA 50311</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-detail-text">
+            <strong>Office Hours</strong>
+            <span>Mon–Fri 9am–5pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="jane@email.com" required />
+          </div>
+          <div class="form-row">
+            <label>Message</label>
+            <textarea name="message" placeholder="Volunteer inquiry, partnership, question..."></textarea>
+          </div>
+          <button type="submit" class="btn-teal" style="border:none;cursor:pointer;">
+            Send Message →
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-brand-name">Community Roots Foundation</div>
+      <p class="footer-desc">Strengthening Greater Des Moines families through food access, youth programs, and community connection since 2004.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Volunteer</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2026 Community Roots Foundation · 501(c)(3) Nonprofit</span>
+    <span>Site by <a href="https://bosatek.com">BosaTek</a></span>
+  </div>
+
+  <a href="index.html" class="back-link">← All demos</a>
+
+  <script>
+    // Donate amount selector
+    document.querySelectorAll('.donate-amount').forEach(el => {
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.donate-amount').forEach(a => a.classList.remove('active'));
+        el.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

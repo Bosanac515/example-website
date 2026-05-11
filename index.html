@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Examples | BosaTek</title>
+  <meta name="description" content="See what your business website could look like. BosaTek builds professional websites for local businesses starting at $500." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:    #ed3a90;
+      --orange:  #f37a22;
+      --dark:    #111111;
+      --mid:     #444444;
+      --light:   #f5f5f5;
+      --white:   #ffffff;
+      --radius:  12px;
+      --sans:    'Inter', -apple-system, sans-serif;
+      --serif:   'Playfair Display', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--dark);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-brand img { height: 28px; width: auto; }
+    .nav-brand span {
+      font-weight: 600; font-size: 17px; letter-spacing: -0.02em;
+    }
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(60px, 10vw, 120px) 32px clamp(50px, 8vw, 100px);
+      text-align: center;
+      background: linear-gradient(160deg, #fff8f5 0%, #ffffff 60%, #f5f0ff 100%);
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      color: #fff;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--mid);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      color: #fff;
+      border-radius: 8px;
+      font-size: 15px; font-weight: 500;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center;
+      padding: 14px 28px;
+      border: 1.5px solid rgba(0,0,0,0.15);
+      border-radius: 8px;
+      font-size: 15px; font-weight: 500;
+      color: var(--mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--pink); color: var(--dark); }
+
+    /* ── DEMOS GRID ── */
+    .demos {
+      padding: clamp(60px, 8vw, 100px) 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .demos-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .demos-header .eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+    .demos-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .demos-header p {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .demo-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: var(--white);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .demo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    }
+
+    .demo-preview {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-preview-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: 20px;
+    }
+    .demo-preview-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Construction card colors */
+    .preview-construction { background: linear-gradient(145deg, #1c1c1e 0%, #2d2d30 50%, #1a1008 100%); }
+    .preview-construction .mock-hero { color: #e07020; }
+    .preview-construction .demo-preview-label { background: rgba(224,112,32,0.25); color: #e07020; border: 1px solid rgba(224,112,32,0.3); }
+
+    /* Nonprofit card colors */
+    .preview-nonprofit { background: linear-gradient(145deg, #1b4f4e 0%, #1e5c5a 50%, #0f3130 100%); }
+    .preview-nonprofit .mock-hero { color: #e8a94d; }
+    .preview-nonprofit .demo-preview-label { background: rgba(232,169,77,0.2); color: #e8a94d; border: 1px solid rgba(232,169,77,0.3); }
+
+    /* Restaurant card colors */
+    .preview-restaurant { background: linear-gradient(145deg, #3d1515 0%, #521c1c 50%, #2a0d0d 100%); }
+    .preview-restaurant .mock-hero { color: #c9922a; }
+    .preview-restaurant .demo-preview-label { background: rgba(201,146,42,0.2); color: #c9922a; border: 1px solid rgba(201,146,42,0.3); }
+
+    /* Salon card colors */
+    .preview-salon { background: linear-gradient(145deg, #f2ede4 0%, #ece6dc 50%, #e0d8cc 100%); }
+    .preview-salon .mock-hero { color: #7e8e72; }
+    .preview-salon .demo-preview-label { background: rgba(126,142,114,0.15); color: #4a5a40; border: 1px solid rgba(126,142,114,0.3); }
+
+    /* Mock mini-site in card */
+    .mock-site {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      padding: 16px;
+    }
+    .mock-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .mock-logo { width: 40px; height: 6px; border-radius: 3px; opacity: 0.7; }
+    .mock-nav-dots { display: flex; gap: 8px; }
+    .mock-nav-dot { width: 24px; height: 4px; border-radius: 2px; opacity: 0.4; }
+    .mock-title { height: 10px; border-radius: 4px; margin-bottom: 8px; width: 65%; }
+    .mock-sub { height: 6px; border-radius: 3px; width: 45%; opacity: 0.5; margin-bottom: 16px; }
+    .mock-btn { height: 22px; width: 80px; border-radius: 4px; opacity: 0.8; }
+
+    /* Color fills per theme */
+    .preview-construction .mock-logo,
+    .preview-construction .mock-nav-dot,
+    .preview-construction .mock-title,
+    .preview-construction .mock-sub { background: rgba(255,255,255,0.35); }
+    .preview-construction .mock-btn { background: #e07020; }
+
+    .preview-nonprofit .mock-logo,
+    .preview-nonprofit .mock-nav-dot,
+    .preview-nonprofit .mock-title,
+    .preview-nonprofit .mock-sub { background: rgba(255,255,255,0.35); }
+    .preview-nonprofit .mock-btn { background: #e8a94d; }
+
+    .preview-restaurant .mock-logo,
+    .preview-restaurant .mock-nav-dot,
+    .preview-restaurant .mock-title,
+    .preview-restaurant .mock-sub { background: rgba(255,255,255,0.35); }
+    .preview-restaurant .mock-btn { background: #c9922a; }
+
+    .preview-salon .mock-logo,
+    .preview-salon .mock-nav-dot,
+    .preview-salon .mock-title,
+    .preview-salon .mock-sub { background: rgba(42,38,34,0.25); }
+    .preview-salon .mock-btn { background: #7e8e72; }
+
+    .demo-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .demo-tag {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .tag-construction { color: #e07020; }
+    .tag-nonprofit    { color: #1b8078; }
+    .tag-restaurant   { color: #9b2020; }
+    .tag-salon        { color: #6a7a5e; }
+
+    .demo-body h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+    .demo-body p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.55;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .demo-palette {
+      display: flex; gap: 6px;
+      margin-bottom: 20px;
+    }
+    .swatch {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    }
+    .demo-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px;
+      border-radius: 7px;
+      font-size: 13px; font-weight: 500;
+      transition: opacity 0.2s, transform 0.15s;
+      width: fit-content;
+    }
+    .demo-link:hover { opacity: 0.85; transform: translateX(2px); }
+    .link-construction { background: #1c1c1e; color: #fff; }
+    .link-nonprofit    { background: #1b4f4e; color: #fff; }
+    .link-restaurant   { background: #3d1515; color: #fff; }
+    .link-salon        { background: #2a2622; color: #fff; }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      background: var(--light);
+      padding: clamp(60px, 8vw, 100px) 32px;
+    }
+    .how-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .how-inner .eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+    .how-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      text-align: left;
+    }
+    .step { display: flex; gap: 16px; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--orange));
+      color: #fff;
+      font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-content h4 {
+      font-size: 0.95rem; font-weight: 600;
+      margin-bottom: 6px; color: var(--dark);
+    }
+    .step-content p { font-size: 0.88rem; color: var(--mid); line-height: 1.55; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .footer-brand img { height: 24px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-brand span { color: #fff; font-weight: 600; font-size: 16px; }
+    .footer p { font-size: 13px; line-height: 1.7; }
+    .footer a { color: rgba(255,255,255,0.75); transition: color 0.2s; }
+    .footer a:hover { color: var(--orange); }
+
+    @media (max-width: 768px) {
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 600px) {
+      .nav { padding: 14px 20px; }
+      .hero { padding: 50px 20px; }
+      .demos, .how { padding: 50px 20px; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-brand" href="https://bosatek.com">
+      <img src="assets/logo.svg" alt="BosaTek" />
+      <span>BosaTek</span>
+    </a>
+    <a class="nav-cta" href="https://bosatek.com#contact">Get Your Site →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Live Demo Sites</div>
+    <h1>See what your site<br /><em>could look like.</em></h1>
+    <p>Every site below is a real working demo — pick the style closest to your business and we'll build yours just like it.</p>
+    <div class="hero-actions">
+      <a href="#demos" class="btn-primary">Browse the demos ↓</a>
+      <a href="https://bosatek.com" class="btn-secondary">Learn about BosaTek</a>
+    </div>
+  </section>
+
+  <!-- DEMOS -->
+  <section class="demos" id="demos">
+    <div class="demos-header">
+      <div class="eyebrow">Four Business Types</div>
+      <h2>Pick the style that fits your business</h2>
+      <p>Click any card to explore a full demo site — each one is completely built out with real sections, real copy, and placeholder photo slots you'll swap with your own.</p>
+    </div>
+
+    <div class="demo-grid">
+
+      <!-- Construction -->
+      <div class="demo-card">
+        <div class="demo-preview preview-construction">
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-nav-dots">
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+              </div>
+            </div>
+            <div class="mock-title"></div>
+            <div class="mock-sub"></div>
+            <div class="mock-btn"></div>
+          </div>
+          <div class="demo-preview-inner" style="position:absolute;bottom:0;left:0;">
+            <span class="demo-preview-label">Construction &amp; Trades</span>
+          </div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-tag tag-construction">Construction</div>
+          <h3>Apex Construction</h3>
+          <p>Bold, dark, and built tough. Ideal for contractors, builders, HVAC, plumbing, electrical — any trades business that wants to look established and serious.</p>
+          <div class="demo-palette">
+            <div class="swatch" style="background:#1c1c1e"></div>
+            <div class="swatch" style="background:#e07020"></div>
+            <div class="swatch" style="background:#f5f5f5"></div>
+          </div>
+          <a href="construction.html" class="demo-link link-construction">View Demo →</a>
+        </div>
+      </div>
+
+      <!-- Nonprofit -->
+      <div class="demo-card">
+        <div class="demo-preview preview-nonprofit">
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-nav-dots">
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+              </div>
+            </div>
+            <div class="mock-title"></div>
+            <div class="mock-sub"></div>
+            <div class="mock-btn"></div>
+          </div>
+          <div class="demo-preview-inner" style="position:absolute;bottom:0;left:0;">
+            <span class="demo-preview-label">Nonprofit &amp; Community</span>
+          </div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-tag tag-nonprofit">Nonprofit</div>
+          <h3>Community Roots Foundation</h3>
+          <p>Warm teal and gold that communicates trust and mission. Great for nonprofits, churches, foundations, and community organizations that need a donate button and event listings.</p>
+          <div class="demo-palette">
+            <div class="swatch" style="background:#1b4f4e"></div>
+            <div class="swatch" style="background:#e8a94d"></div>
+            <div class="swatch" style="background:#fdf8f0"></div>
+          </div>
+          <a href="nonprofit.html" class="demo-link link-nonprofit">View Demo →</a>
+        </div>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="demo-card">
+        <div class="demo-preview preview-restaurant">
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-nav-dots">
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+              </div>
+            </div>
+            <div class="mock-title"></div>
+            <div class="mock-sub"></div>
+            <div class="mock-btn"></div>
+          </div>
+          <div class="demo-preview-inner" style="position:absolute;bottom:0;left:0;">
+            <span class="demo-preview-label">Restaurant &amp; Food</span>
+          </div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-tag tag-restaurant">Restaurant</div>
+          <h3>The Harvest Table</h3>
+          <p>Deep burgundy, warm cream, and candlelit gold — a rich, upscale feel perfect for restaurants, cafés, bakeries, and any food business that wants to look premium.</p>
+          <div class="demo-palette">
+            <div class="swatch" style="background:#3d1515"></div>
+            <div class="swatch" style="background:#c9922a"></div>
+            <div class="swatch" style="background:#fdf1dc"></div>
+          </div>
+          <a href="restaurant.html" class="demo-link link-restaurant">View Demo →</a>
+        </div>
+      </div>
+
+      <!-- Salon -->
+      <div class="demo-card">
+        <div class="demo-preview preview-salon">
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-nav-dots">
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+                <div class="mock-nav-dot"></div>
+              </div>
+            </div>
+            <div class="mock-title"></div>
+            <div class="mock-sub"></div>
+            <div class="mock-btn"></div>
+          </div>
+          <div class="demo-preview-inner" style="position:absolute;bottom:0;left:0;">
+            <span class="demo-preview-label">Salon &amp; Beauty</span>
+          </div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-tag tag-salon">Salon &amp; Beauty</div>
+          <h3>Lumière Studio</h3>
+          <p>Soft bone, warm sage, and editorial typography — refined and personal. Perfect for hair studios, nail salons, estheticians, spas, and boutique beauty businesses.</p>
+          <div class="demo-palette">
+            <div class="swatch" style="background:#f2ede4"></div>
+            <div class="swatch" style="background:#9cab8f"></div>
+            <div class="swatch" style="background:#1a1714"></div>
+          </div>
+          <a href="salon.html" class="demo-link link-salon">View Demo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="how-inner">
+      <div class="eyebrow">How It Works</div>
+      <h2>Your site, live in days — not weeks</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Pick a style</h4>
+            <p>Choose from one of these demos or bring your own inspiration. We'll match your brand colors and tone.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Send your info</h4>
+            <p>Business name, address, services, phone, photos — a quick form or 15-minute call and we've got everything we need.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>We build it</h4>
+            <p>Site goes live on your domain with Google Analytics, a contact form, and all free tools configured end to end.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>You own it</h4>
+            <p>No platform lock-in. Plain HTML on GitHub Pages. $500 one-time setup, then a locked-in $100/month maintenance retainer — price never goes up.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="BosaTek" />
+      <span>BosaTek</span>
+    </div>
+    <p>
+      Des Moines, Iowa &nbsp;·&nbsp;
+      <a href="tel:+15154682767">(515) 468-2767</a> &nbsp;·&nbsp;
+      <a href="mailto:hello@bosatek.com">hello@bosatek.com</a>
+    </p>
+    <p style="margin-top:10px; font-size:12px; opacity:0.5;">
+      © 2026 BosaTek. These are demo sites for illustration purposes.
+  
